@@ -2,8 +2,6 @@
 DynaFile allows you to make synchronous and asynchronous changes to your files and execute terminal commands asynchronously.
 
 ## Installation
-bash
-Kodu kopyala
 npm install dynafile
 
 ## Features
