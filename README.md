@@ -1,15 +1,17 @@
-DynaFile
+# DynaFile
 DynaFile allows you to make synchronous and asynchronous changes to your files and execute terminal commands asynchronously.
 
-Installation
+## Installation
 bash
 Kodu kopyala
 npm install dynafile
-Features
+
+## Features
 Perform synchronous and asynchronous file modifications.
 Execute terminal commands asynchronously.
 Easily interact with the current working directory.
-Usage
+
+## Usage
 Reading the Current Directory
 To list the files in the current directory, you can use the current method:
 
@@ -20,7 +22,7 @@ const dynaF = new DynaFile();
 const currentFiles = dynaF.current();
 console.log(currentFiles);
 ```
-Modifying a File
+## Modifying a File
 You can use the change and changeSync methods to modify files asynchronously and synchronously, respectively.
 
 Asynchronous Example:
@@ -42,7 +44,7 @@ const dynaF = new DynaFile();
 dynaF.changeSync('test.txt', 'hello me', 'hello world');
 console.log('File changed synchronously');
 ```
-Executing Terminal Commands Asynchronously
+## Executing Terminal Commands Asynchronously
 You can run terminal commands asynchronously using the terminal method:
 
 ```bash
@@ -54,3 +56,5 @@ const dynaF = new DynaFile();
     console.log(ls);
 })();
 ```
+## License
+This project is licensed under the MIT License.
