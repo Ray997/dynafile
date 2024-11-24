@@ -39,14 +39,13 @@ class Directory {
         try {
             filePath = filePath || this.directoryPath;
             const fileFullPath = path.join(filePath, fileName);
-    
+            
             fs.readFile(fileFullPath, 'utf8', (err, data) => {
                 if (err) {
                     return callback(err);
                 }
-    
                 const result = data.replace(currentContent, newContent);
-    
+
                 fs.writeFile(fileFullPath, result, 'utf8', (err) => {
                     if (err) {
                         return callback(err);
@@ -70,7 +69,41 @@ class Directory {
             }, filePath);
         });
     }
+
+    envChange(vary, fileName) {
+        try {
+            fileName = fileName || '.env';
+            const currentContent = fs.readFileSync(path.join(this.directoryPath, fileName), 'utf8');
+            const values = {}
+
+            currentContent.split('\n').forEach((line) => {
+                const [key, value] = line.split('=');
+                values[key] = value;
+            });
+
+            let newContent = {
+                ...values,
+                ...vary
+            };
+            newContent = Object.keys(newContent).map((key) => `${key}=${newContent[key]}`).join('\n');
+
+            this.change(fileName, currentContent, newContent, (err, result) => {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+                console.log(result);
+            });
+
+        } catch (error) {
+            console.error('Error when reading file path:', error);
+        }
+        
+    }
+
     
 }
+
+(new Directory()).envChange({'PORT': 3000,"DB_HOST": "localhost"});
 
 module.exports = Directory;
