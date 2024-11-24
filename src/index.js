@@ -104,6 +104,5 @@ class Directory {
     
 }
 
-(new Directory()).envChange({'PORT': 3000,"DB_HOST": "localhost"});
 
 module.exports = Directory;
