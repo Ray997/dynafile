@@ -19,12 +19,4 @@ class Directory {
     
 }
 
-const dynaF = new Directory();
-(async function test(){
-    console.log(dynaF.current(path.join(__dirname,'./classes')));
-    console.log("---")
-    console.log(dynaF.current());
-})()
-
-
 module.exports = Directory;
