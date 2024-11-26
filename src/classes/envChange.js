@@ -2,8 +2,9 @@ const fs = require('fs');
 const path = require('path');
 
 class EnvChange {
-    constructor(directoryPath) {
+    constructor(directoryPath,change) {
         this.directoryPath = directoryPath;
+        this.change = change;
     }
     envChange(vary, fileName) {
         try {

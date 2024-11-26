@@ -8,7 +8,6 @@ class Current {
         customPath ??= this.directoryPath;
         try {
             const currentList = fs.readdirSync(customPath);
-            console.log(customPath)
             return currentList;
         } catch (err) {
             console.error('Error when reading file path:', err);
